@@ -23,6 +23,22 @@ public class LstParser {
             rows.add(scn.nextLine());
     }
 
+    private void isFileLST() {
+        String fileName = inFile.getName();
+        String appendix = fileName.substring(fileName.length()-3, fileName.length());
+        if (!appendix.equals("lst"))
+            throw new RuntimeException("This is not .lst file!");
+    }
+
+    public SARBaseInformation parseLSTFile() throws IOException{
+        isFileLST();
+        readRows();
+        SARBaseInformationBuilder builder = new SARBaseInformationBuilder();
+
+
+        return null;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
