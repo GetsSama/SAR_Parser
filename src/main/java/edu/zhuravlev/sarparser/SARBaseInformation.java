@@ -100,15 +100,15 @@ public class SARBaseInformation {
     @Override
     public String toString() {
         return "SARBaseInformation{" +
-                "MSARName='" + MSARName + '\'' +
-                ", createDate='" + createDate + '\'' +
-                ", levelOfMNADescriptors=" + levelOfMNADescriptors +
-                ", substancesNumber=" + substancesNumber +
-                ", descriptorsNumber=" + descriptorsNumber +
-                ", activityType=" + activityType +
-                ", selectedActivityTypes=" + selectedActivityTypes +
-                ", averageIAP=" + averageIAP +
-                ", validationTable=" + validationTable +
+                "MSARName=" + MSARName + '\n' +
+                ", createDate=" + createDate + '\n' +
+                ", levelOfMNADescriptors=" + levelOfMNADescriptors + '\n' +
+                ", substancesNumber=" + substancesNumber + '\n' +
+                ", descriptorsNumber=" + descriptorsNumber + '\n' +
+                ", activityType=" + activityType + '\n' +
+                ", selectedActivityTypes=" + selectedActivityTypes + '\n' +
+                ", averageIAP=" + averageIAP + '\n' +
+                ", validationTable=" + validationTable + '\n' +
                 ", notPredictableActivityTypes=" + notPredictableActivityTypes +
                 '}';
     }

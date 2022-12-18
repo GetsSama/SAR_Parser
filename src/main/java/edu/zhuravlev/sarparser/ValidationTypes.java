@@ -2,7 +2,7 @@ package edu.zhuravlev.sarparser;
 
 import java.util.Objects;
 
-final class ValidationTypes {
+public final class ValidationTypes {
     private final int number;
     private final Double IAP;
     private final String activityType;
