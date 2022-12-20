@@ -17,6 +17,16 @@ public class SARBaseInformation {
 
     private List<String> notPredictableActivityTypes;
 
+    private int lengthOfPeptide;
+
+    public int getLengthOfPeptide() {
+        return lengthOfPeptide;
+    }
+
+    public void setLengthOfPeptide(int lengthOfPeptide) {
+        this.lengthOfPeptide = lengthOfPeptide;
+    }
+
     public String getMSARName() {
         return MSARName;
     }

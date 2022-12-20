@@ -68,8 +68,17 @@ public class LstParser {
         readRows();
         SARBaseInformationBuilder builder = new SARBaseInformationBuilder();
 
-        builder.addMSARName(rows.get(2).strip());
+        String MSARName = rows.get(2).strip();
+        boolean correct = LstFilePattern.isLSTFileNameCorrect(MSARName);
+        if (!correct)
+            throw new RuntimeException("Name of .LST file or .MSAR file is not correct!");
+        builder.addMSARName(MSARName);
         builder.addCreateDate(rows.get(3).strip());
+
+        //----------------------------------------------------------------------------------
+        //В действительности не нужно умножать и складывать длину пептида, необходимо сразу писать истинную длину в названии файла .sdf!!!
+        builder.addLengthOfPeptide(LstFilePattern.getLengthPeptideByFileName(MSARName)*2+1);
+        //----------------------------------------------------------------------------------
 
         builder.addLevelMNADescriptors(Integer.parseInt(getNumericParameterByIndex(5)));
         builder.addSubstancesNumber(Integer.parseInt(getNumericParameterByIndex(6)));

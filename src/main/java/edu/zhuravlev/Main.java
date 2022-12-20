@@ -1,16 +1,21 @@
 package edu.zhuravlev;
 
+import edu.zhuravlev.datahandler.DataGrouper;
 import edu.zhuravlev.sarparser.LstParser;
 import edu.zhuravlev.sarparser.SARBaseInformation;
 import edu.zhuravlev.sarparser.ValidationTypes;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URI;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -28,13 +33,16 @@ public class Main {
                 sarList.add(getSARByPath(path));}
         //System.out.println(sarList);
 
+        var iapFromPeptLen = DataGrouper.getIAPFromPeptLength(sarList);
+        for (var pair : iapFromPeptLen.entrySet())
+            System.out.println(pair);
     }
 
     private static SARBaseInformation getSARByPath(String path) throws IOException {
         ClassLoader cl = ClassLoader.getSystemClassLoader();
         URL resource = cl.getResource(path);
+        Objects.requireNonNull(resource, "Resource with path \"" + path + "\" does not exist!");
         LstParser parser = new LstParser(resource.getPath());
-        SARBaseInformation sar = parser.parseLSTFile();
-        return sar;
+        return parser.parseLSTFile();
     }
 }

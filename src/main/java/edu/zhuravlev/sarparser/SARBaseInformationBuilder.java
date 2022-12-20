@@ -18,7 +18,7 @@ class SARBaseInformationBuilder {
     }
 
     private void SARInfoCorrectChecker() {
-        if (counter != 9)
+        if (counter != 10)
             throw new RuntimeException("Built object isn't correct!");
     }
 
@@ -87,6 +87,13 @@ class SARBaseInformationBuilder {
     public SARBaseInformationBuilder addNotPredictableTypes(List<String> types) {
         dataCheck(types);
         sarInfo.setNotPredictableActivityTypes(types);
+        return this;
+    }
+
+    public SARBaseInformationBuilder addLengthOfPeptide(int length) {
+        dataCheck(length);
+        sarInfo.setLengthOfPeptide(length);
+        counter++;
         return this;
     }
 
