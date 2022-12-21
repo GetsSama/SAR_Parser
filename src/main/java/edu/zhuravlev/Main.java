@@ -1,6 +1,8 @@
 package edu.zhuravlev;
 
 import edu.zhuravlev.datahandler.DataGrouper;
+import edu.zhuravlev.datahandler.ExcelCreator;
+import edu.zhuravlev.datahandler.ToTableData;
 import edu.zhuravlev.sarparser.LstParser;
 import edu.zhuravlev.sarparser.SARBaseInformation;
 import edu.zhuravlev.sarparser.ValidationTypes;
@@ -33,9 +35,8 @@ public class Main {
                 sarList.add(getSARByPath(path));}
         //System.out.println(sarList);
 
-        var iapFromPeptLen = DataGrouper.getIAPFromPeptLength(sarList);
-        for (var pair : iapFromPeptLen.entrySet())
-            System.out.println(pair);
+        ToTableData iapFromLength = DataGrouper.getIAPFromPeptLength(sarList);
+        ExcelCreator.createTable("C:\\Users\\Zh_Nikolay\\Desktop\\results1.csv", "iap_length", iapFromLength);
     }
 
     private static SARBaseInformation getSARByPath(String path) throws IOException {
