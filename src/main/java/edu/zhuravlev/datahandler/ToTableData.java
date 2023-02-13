@@ -2,7 +2,7 @@ package edu.zhuravlev.datahandler;
 
 import java.util.Map;
 
-public interface ToTableData<K, V> {
-    Map<K,V> getData();
+public interface ToTableData {
+    Map<Integer, Double> getData();
     String[] getHeaders();
 }

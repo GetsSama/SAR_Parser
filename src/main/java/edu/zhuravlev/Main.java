@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        String abl = "ABL1";
+        String abl = "ABL2";
         String middle = "_descript_";
         String pept = "_pept_len_";
         String suffix = ".lst";
@@ -35,8 +35,12 @@ public class Main {
                 sarList.add(getSARByPath(path));}
         //System.out.println(sarList);
 
-        ToTableData iapFromLength = DataGrouper.getIAPFromPeptLength(sarList);
-        ExcelCreator.createTable("C:\\Users\\Zh_Nikolay\\Desktop\\results1.csv", "iap_length", iapFromLength);
+//        ToTableData iapFromLength = DataGrouper.getIAPFromPeptLength(sarList);
+//        DataGrouper.getFileNameWithMaxIAPFromLength(sarList);
+//        ExcelCreator.createTable("C:\\Users\\Zh_Nikolay\\Desktop\\results1.xls", "iap_length", iapFromLength);
+
+        var iapFromLevelEachLength = DataGrouper.getIAPFromDescriptorLevelFromPeptideLength(sarList);
+        ExcelCreator.createTable("C:\\Users\\Zh_Nikolay\\Desktop\\results_ABL2_.xlsx", iapFromLevelEachLength);
     }
 
     private static SARBaseInformation getSARByPath(String path) throws IOException {
