@@ -87,14 +87,19 @@ public class LstParser {
         builder.addSelectedActivityTypes(Integer.parseInt(getNumericParameterByIndex(9)));
         builder.addAverageIAP(Double.parseDouble(getNumericParameterByIndex(10).replace(',', '.')));
 
-        int counter = 15;
-        List<ValidationTypes> validationTypes = new ArrayList<>();
-        do {
-            validationTypes.add(getValidationTypesByString(rows.get(counter)));
+        int counter = 12;
+        if(rows.get(counter).strip().equals("SAR Base Validation")) {
+            counter = 15;
+            List<ValidationTypes> validationTypes = new ArrayList<>();
+            do {
+                validationTypes.add(getValidationTypesByString(rows.get(counter)));
+                counter++;
+            } while (!rows.get(counter).equals(""));
+            builder.addAllValidationTypes(validationTypes);
             counter++;
-        } while (!rows.get(counter).equals(""));
-        builder.addAllValidationTypes(validationTypes);
-        counter++;
+        } else {
+            builder.addAllValidationTypes(new ArrayList<>());
+        }
 
         if (rows.get(counter).equals("Not Predictable Activity Types")) {
             counter += 3;
